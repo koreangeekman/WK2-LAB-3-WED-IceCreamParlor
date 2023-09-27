@@ -13,13 +13,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Shantell+Sans:ital,wght@1,300&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- <script id="debug-script" src="https://cdn.jsdelivr.net/gh/MickShannahan/style-debug@latest/debug.min.js" defer></script> -->
+  <!-- <script id="debug-script" src="https://cdn.jsdelivr.net/gh/MickShannahan/style-debug@latest/debug.min.js"
+    defer></script> -->
 </head>
 
 <body class="debug">
@@ -37,11 +39,11 @@
 
     <main class="row">
       <!-- SECTION CART -->
-      <div class="col-12 col-md-4 order-2 order-md-1 card h-100 p-3">
+      <div class="col-12 col-md-4 order-2 order-md-1 card h-100 p-3 cart">
         <h3 class="d-flex align-items-center"><i class="fs-1 mdi mdi-cart-outline"></i> CART</h3>
 
         <!-- SECTION CART LISTINGS -->
-        <div class="fs-5 fw-bold p-3 d-flex justify-content-between" id="cart">
+        <div class="fs-8 fw-bold p-3 d-flex justify-content-between">
           <div class="pe-1">ITEM</div>
           <span>
             <div class="d-inline ps-1"> | QTY</div>
@@ -49,18 +51,21 @@
             <div class="d-inline ps-1"> | LINE TOTAL</div>
           </span>
         </div>
+
         <div class="p-3" id="cart">
-          <p class="fs-5">
+          <p class="fs-8">
             No items in cart
           </p>
 
-          <!-- Cart Format
-          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
-          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p> -->
-
-          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
-          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
-          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
+          <!-- Cart Format -->
+          <!-- <span class="d-flex justify-content-between">
+            <p>${itemName}</p>
+            <span class="d-flex justify-content-evenly">
+              <p class="px-1"> | ${itemQTY}</p>
+              <p class="px-1"> | $${priceEach}</p>
+              <p class="px-1"> | $${lineTotal}</p>
+            </span>
+          </span> -->
 
         </div>
         <!-- !SECTION CART LISTINGS -->
@@ -68,22 +73,23 @@
         <div class="total align-self-end pe-3 text-right">
           <span class="d-flex justify-content-between">
             <p class="fs-8 fw-bold mb-0">Subtotal: </p>
-            <p class="fs-8 mb-0" id="subtotal">$120.00</p>
+            <p class="fs-8 mb-0" id="subtotal">$0.00</p>
           </span>
           <span class="d-flex justify-content-between">
             <p class="fs-8 fw-bold mb-0">Tax (6%): </p>
-            <p class="d-inline fs-8 mb-0" id="tax">$20.00</p>
+            <p class="d-inline fs-8 mb-0" id="tax">$0.00</p>
           </span>
           <span class="d-flex justify-content-between">
-            <p class="fs-3 fw-bold mb-0 pe-3">Total: </p>
-            <p class="d-inline fs-3 mb-0" id="total">$140.00</p>
+            <p class="fs-5 fw-bold mb-0 pe-3">Total: </p>
+            <p class="d-inline fs-5 fw-bold mb-0" id="total">$0.00</p>
           </span>
         </div>
+        <button class="btn btn-primary align-self-end">Buy</button>
       </div>
       <!-- !SECTION CART -->
 
       <!-- SECTION MENU LISTINGS -->
-      <div class="col-12 col-md-8 order-1 order-md-2 p-3">
+      <div class="col-12 col-md-8 order-1 order-md-2 px-4 px-md-5">
         <div class="row justify-content-center" id="menuListing">
 
           <!-- SECTION MENU FORMAT EXAMPLE

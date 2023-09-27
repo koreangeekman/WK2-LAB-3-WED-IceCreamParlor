@@ -26,6 +26,10 @@ img {
   display: none;
 }
 
+.cart {
+  font-family: 'Courier Prime', monospace;
+}
+
 @media(max-width:768px) {
   .showMobile {
     display: block;

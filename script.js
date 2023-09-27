@@ -83,7 +83,7 @@ const menu = [
 
 // const categoryHTML = `
 //           <div class="col-12 category title">
-//             <div class="p fs-1">${categoryName}</div>
+//             <div class="p-3 fs-1">${categoryName}</div>
 //           </div>
 //           `;
 
@@ -96,6 +96,17 @@ const menu = [
 //           </div>
 //           `
 
+// const cartHTML = `
+//           <span class="d-flex justify-content-between">
+//             <p>${itemName}</p>
+//             <span class="d-flex justify-content-evenly">
+//               <p class="px-1"> | ${itemQTY}</p>
+//               <p class="px-1"> | $${priceEach}</p>
+//               <p class="px-1"> | $${lineTotal}</p>
+//             </span>
+//           </span>
+// `
+
 function drawMenu() {
   let menuHTML = "";
 
@@ -104,7 +115,7 @@ function drawMenu() {
     // console.log(section.categoryItems);
     menuHTML += `
     <div class="col-12 category title">
-    <div class="p fs-1">${section.category}</div>
+    <div class="fs-1">${section.category}</div>
     </div>
     `;
     section.categoryItems.forEach(sectionItem => {
@@ -129,17 +140,13 @@ let cart = [];
 
 function addItem(item, price) {
 
-  console.log(item)
-  console.log(price)
-  console.log(cart)
-
-  let itemInCartCheck = menu.find(cartItem => cartItem.name == item)
+  let itemInCartCheck = cart.find(cartItem => cartItem.name == item);
   console.log(!!itemInCartCheck)
 
   if (!itemInCartCheck) {
     console.log('adding new item to cart');
     const cartItem = {
-      name: `'${item}'`,
+      name: `${item}`,
       price: price,
       qty: 1
     }
@@ -148,8 +155,8 @@ function addItem(item, price) {
   console.log(cart)
 
   if (itemInCartCheck) {
-    console.log('item in car, adding qty');
-    menu.find(cartItem => {
+    console.log('item in cart, adding qty');
+    cart.find(cartItem => {
       if (cartItem.name == item) {
         console.log(cartItem.name);
         console.log(cartItem.qty);
@@ -159,8 +166,31 @@ function addItem(item, price) {
     })
   }
 
+  drawCart();
 }
 
 function drawCart() {
-  document.getElementById('cart').innerHTML = cart;
+  let cartHTML = "";
+  let subtotal = 0;
+  let tax = 0.06; //6%
+
+  cart.forEach(cartItem => {
+    subtotal += (cartItem.price * cartItem.qty)
+    cartHTML += `
+          <span class="d-flex justify-content-between">
+            <p>${cartItem.name}</p>
+            <span class="d-flex justify-content-evenly">
+              <p class="px-1"> | ${cartItem.qty}</p>
+              <p class="px-1"> | $${(cartItem.price).toFixed(2)}</p>
+              <p class="px-1"> | $${(cartItem.price * cartItem.qty).toFixed(2)}</p>
+            </span>
+          </span>
+          `
+  })
+  document.getElementById('cart').innerHTML = "";
+  document.getElementById('cart').innerHTML = cartHTML;
+
+  document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+  document.getElementById('tax').innerText = (subtotal * tax).toFixed(2);
+  document.getElementById('total').innerText = (subtotal * (1 + tax)).toFixed(2);
 }
