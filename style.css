@@ -1,0 +1,21 @@
+body {
+  background-color: #123456;
+  color: white;
+}
+
+img {
+  min-height: 20dvh;
+}
+
+.card {
+  color: black;
+}
+
+.category {
+  text-decoration: underline;
+  font-family: 'Shantell Sans', cursive;
+}
+
+.menuItems {
+  text-align: center;
+}
