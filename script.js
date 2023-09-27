@@ -137,6 +137,11 @@ function drawMenu() {
 drawMenu();
 
 let cart = [];
+const totals = {
+  subtotal: 0,
+  taxTotal: 0,
+  total: 0
+};
 
 function addItem(item, price) {
 
@@ -169,13 +174,9 @@ function addItem(item, price) {
   drawCart();
 }
 
-function drawCart() {
+function formatCart() {
   let cartHTML = "";
-  let subtotal = 0;
-  let tax = 0.06; //6%
-
   cart.forEach(cartItem => {
-    subtotal += (cartItem.price * cartItem.qty)
     cartHTML += `
           <span class="d-flex justify-content-between">
             <p>${cartItem.name}</p>
@@ -186,11 +187,90 @@ function drawCart() {
             </span>
           </span>
           `
-  })
-  document.getElementById('cart').innerHTML = "";
-  document.getElementById('cart').innerHTML = cartHTML;
+  });
+  return cartHTML;
+}
 
-  document.getElementById('subtotal').innerText = subtotal.toFixed(2);
-  document.getElementById('tax').innerText = (subtotal * tax).toFixed(2);
-  document.getElementById('total').innerText = (subtotal * (1 + tax)).toFixed(2);
+function calcSubtotal() {
+  const tax = 0.06; //6%
+  let subtotal = 0;
+
+  cart.forEach(cartItem => {
+    subtotal += (cartItem.price * cartItem.qty)
+  })
+
+  totals.subtotal = subtotal;
+  totals.taxTotal = subtotal * tax;
+  totals.total = subtotal * (1 + tax);
+  return subtotal
+}
+
+function formatTotals() {
+  totalsHTML = `
+          <div class="total pe-3 text-right">
+            <span class="d-flex justify-content-between">
+              <p class="fs-8 fw-bold mb-0">Subtotal: </p>
+              <p class="fs-8 mb-0" id="subtotal">$${(totals.subtotal).toFixed(2)}</p>
+            </span>
+            <span class="d-flex justify-content-between">
+              <p class="fs-8 fw-bold mb-0">Tax (6%): </p>
+              <p class="d-inline fs-8 mb-0" id="tax">$${(totals.taxTotal).toFixed(2)}</p>
+            </span>
+            <span class="d-flex justify-content-between">
+              <p class="fs-5 fw-bold mb-0 pe-3">Total: </p>
+              <p class="d-inline fs-5 fw-bold mb-0" id="total">$${(totals.total).toFixed(2)}</p>
+            </span>
+          </div>
+  `;
+  return totalsHTML;
+}
+
+function drawCart() {
+  const tax = 0.06; //6%
+
+  document.getElementById('cart').innerHTML = "";
+  document.getElementById('cart').innerHTML = formatCart();
+
+  document.getElementById('subtotal').innerText = calcSubtotal().toFixed(2);
+  document.getElementById('tax').innerText = (calcSubtotal() * tax).toFixed(2);
+  document.getElementById('total').innerText = (calcSubtotal() * (1 + tax)).toFixed(2);
+
+}
+
+function emptyCart() {
+  cart = [];
+  drawCart()
+  document.getElementById('cart').innerHTML = "No items in cart";
+  document.getElementById('subtotal').innerText = '$0.00';
+  document.getElementById('tax').innerText = '$0.00';
+  document.getElementById('total').innerText = '$0.00';
+}
+
+function checkout() {
+  if (cart.length != 0) {
+    Swal.fire({
+      title: 'Ready to checkout?',
+      html: `Please review your order:
+      ${formatCart()}
+      ${formatTotals()}
+      `,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, place order!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Success!',
+          'Your order has been placed!',
+          'success'
+        )
+        emptyCart();
+      }
+    })
+  } else {
+    Swal.fire('Your cart is empty..')
+  }
+
 }

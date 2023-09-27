@@ -40,7 +40,11 @@
     <main class="row">
       <!-- SECTION CART -->
       <div class="col-12 col-md-4 order-2 order-md-1 card h-100 p-3 cart">
-        <h3 class="d-flex align-items-center"><i class="fs-1 mdi mdi-cart-outline"></i> CART</h3>
+        <span class="d-flex justify-content-between">
+          <h3 class="d-flex align-items-center"><i class="fs-1 mdi mdi-cart-outline"></i> CART</h3>
+          <p class="btn btn-light fs-2 px-3 mb-0" onclick="emptyCart()" title="Empty Cart" alt="Empty Cart"><i
+              class="text-danger mdi mdi-cart-remove"></i></p>
+        </span>
 
         <!-- SECTION CART LISTINGS -->
         <div class="fs-8 fw-bold p-3 d-flex justify-content-between">
@@ -70,21 +74,25 @@
         </div>
         <!-- !SECTION CART LISTINGS -->
 
-        <div class="total align-self-end pe-3 text-right">
-          <span class="d-flex justify-content-between">
-            <p class="fs-8 fw-bold mb-0">Subtotal: </p>
-            <p class="fs-8 mb-0" id="subtotal">$0.00</p>
-          </span>
-          <span class="d-flex justify-content-between">
-            <p class="fs-8 fw-bold mb-0">Tax (6%): </p>
-            <p class="d-inline fs-8 mb-0" id="tax">$0.00</p>
-          </span>
-          <span class="d-flex justify-content-between">
-            <p class="fs-5 fw-bold mb-0 pe-3">Total: </p>
-            <p class="d-inline fs-5 fw-bold mb-0" id="total">$0.00</p>
-          </span>
-        </div>
-        <button class="btn btn-primary align-self-end">Buy</button>
+        <span class="fs-8 fw-bold p-3 d-flex justify-content-end" id="cartTotals">
+          <div class="total pe-3 text-right">
+            <span class="d-flex justify-content-between">
+              <p class="fs-8 fw-bold mb-0">Subtotal: </p>
+              <p class="fs-8 mb-0" id="subtotal">$0.00</p>
+            </span>
+            <span class="d-flex justify-content-between">
+              <p class="fs-8 fw-bold mb-0">Tax (6%): </p>
+              <p class="d-inline fs-8 mb-0" id="tax">$0.00</p>
+            </span>
+            <span class="d-flex justify-content-between">
+              <p class="fs-5 fw-bold mb-0 pe-3">Total: </p>
+              <p class="d-inline fs-5 fw-bold mb-0" id="total">$0.00</p>
+            </span>
+          </div>
+        </span>
+
+
+        <button class="btn btn-primary align-self-end" onclick="checkout()">Checkout</button>
       </div>
       <!-- !SECTION CART -->
 
@@ -117,8 +125,10 @@
     </footer>
   </div>
 
-  <!-- basic js link -->
+  <!-- js links -->
   <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
