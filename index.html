@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>CodeWorks Ice Cream Parlor</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,39 +36,42 @@
     </header>
 
     <main class="row">
-      <div class="col-12 col-md-4 order-2 order-md-1 card h-100">
-        <h3>CART <i class="mdi mdi-cart-outline"></i></h3>
-        <div id="cart"></div>
-        <div class="total">
+      <div class="col-12 col-md-4 order-2 order-md-1 card h-100 p-3">
+        <h3 class="d-flex align-items-center"><i class="fs-1 mdi mdi-cart-outline"></i> CART</h3>
+        <div class="fs-5 p-3" id="cart">No items in cart</div>
+        <div class="total align-self-end pe-5 text-right">
           <h5>Total:</h5>
-          <p id="total">$0.00</p>
+          <p class="fs-3" id="total">$120.00</p>
         </div>
       </div>
-      <div class="col-12 col-md-8 order-1 order-md-2 ">
-        <div class="row justify-content-center">
+      <div class="col-12 col-md-8 order-1 order-md-2 p-3">
+        <div class="row justify-content-center" id="menuListing">
 
           <div class="col-12 category title">
-            <div class="p fs-1">Toppings</div>
+            <div class="p fs-1">Vessels</div>
           </div>
 
           <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems"><img src="" alt="">
-              <p class="items">Sprinkles $2</p>
+            <div class="card menuItems" onclick="addItem('Waffle Cone')">
+              <img
+                src="https://images.unsplash.com/photo-1559703248-dcaaec9fab78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=512&q=80"
+                alt="Waffle Cone">
+              <p class="items">Waffle Cone $2</p>
             </div>
+          </div>
+
+          <!-- 
+          <div class="col-12 category title">
+            <div class="p fs-1">${categoryName}</div>
           </div>
 
           <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems"><img src="" alt="">
-              <p class="items">Sprinkles $2</p>
+            <div class="card menuItems" onclick="addItem(${itemName})">
+              <img src="${itemImg}" alt="${itemName}">
+              <p class="items">${itemName} • $${itemPrice}</p>
             </div>
           </div>
-
-          <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems"><img src="" alt="">
-              <p class="items">Sprinkles $2</p>
-            </div>
-          </div>
-
+ -->
 
         </div>
       </div>
