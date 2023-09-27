@@ -36,50 +36,78 @@
     </header>
 
     <main class="row">
+      <!-- SECTION CART -->
       <div class="col-12 col-md-4 order-2 order-md-1 card h-100 p-3">
         <h3 class="d-flex align-items-center"><i class="fs-1 mdi mdi-cart-outline"></i> CART</h3>
-        <div class="fs-5 p-3" id="cart">No items in cart</div>
-        <div class="total align-self-end pe-5 text-right">
-          <h5>Total:</h5>
-          <p class="fs-3" id="total">$120.00</p>
+
+        <!-- SECTION CART LISTINGS -->
+        <div class="fs-5 fw-bold p-3 d-flex justify-content-between" id="cart">
+          <div class="pe-1">ITEM</div>
+          <span>
+            <div class="d-inline ps-1"> | QTY</div>
+            <div class="d-inline ps-1"> | EACH</div>
+            <div class="d-inline ps-1"> | LINE TOTAL</div>
+          </span>
+        </div>
+        <div class="p-3" id="cart">
+          <p class="fs-5">
+            No items in cart
+          </p>
+
+          <!-- Cart Format
+          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
+          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p> -->
+
+          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
+          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
+          <p>${itemName} | ${itemQTY} | ${priceEach} | ${lineTotal}</p>
+
+        </div>
+        <!-- !SECTION CART LISTINGS -->
+
+        <div class="total align-self-end pe-3 text-right">
+          <span class="d-flex justify-content-between">
+            <p class="fs-8 fw-bold mb-0">Subtotal: </p>
+            <p class="fs-8 mb-0" id="subtotal">$120.00</p>
+          </span>
+          <span class="d-flex justify-content-between">
+            <p class="fs-8 fw-bold mb-0">Tax (6%): </p>
+            <p class="d-inline fs-8 mb-0" id="tax">$20.00</p>
+          </span>
+          <span class="d-flex justify-content-between">
+            <p class="fs-3 fw-bold mb-0 pe-3">Total: </p>
+            <p class="d-inline fs-3 mb-0" id="total">$140.00</p>
+          </span>
         </div>
       </div>
+      <!-- !SECTION CART -->
+
+      <!-- SECTION MENU LISTINGS -->
       <div class="col-12 col-md-8 order-1 order-md-2 p-3">
         <div class="row justify-content-center" id="menuListing">
 
-          <div class="col-12 category title">
-            <div class="p fs-1">Vessels</div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems" onclick="addItem('Waffle Cone')">
-              <img
-                src="https://images.unsplash.com/photo-1559703248-dcaaec9fab78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=512&q=80"
-                alt="Waffle Cone">
-              <p class="items">Waffle Cone $2</p>
+          <!-- SECTION MENU FORMAT EXAMPLE
+            <div class="col-12 category title">
+              <div class="p fs-1">${categoryName}</div>
             </div>
-          </div>
-
-          <!-- 
-          <div class="col-12 category title">
-            <div class="p fs-1">${categoryName}</div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems" onclick="addItem(${itemName})">
-              <img src="${itemImg}" alt="${itemName}">
-              <p class="items">${itemName} • $${itemPrice}</p>
-            </div>
-          </div>
- -->
+            
+            <div class="col-12 col-md-4 p-3 p-md-4">
+              <div class="card menuItems" onclick="addItem('${itemName}','${itemPrice}')">
+                <img src="${itemImg}" alt="${itemName}">
+                <p class="items">${itemName} • $${itemPrice}</p>
+              </div>
+            </div> -->
+          <!-- !SECTION MENU FORMAT EXAMPLE -->
 
         </div>
       </div>
-
+      <!-- !SECTION MENU LISTINGS -->
     </main>
 
     <footer class="row">
-
+      <div class="col-12 mt-4 p-3 text-center bg-light text-dark">
+        <p class="small mb-0">Created by Soilent Solutions, LLC 🙃</p>
+      </div>
     </footer>
   </div>
 

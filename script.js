@@ -89,7 +89,7 @@ const menu = [
 
 // const itemHTML = `
 //           <div class="col-12 col-md-4 p-3 p-md-4">
-//             <div class="card menuItems" onclick="addItem('${itemName}')">
+//             <div class="card btn btn-primary menuItems" onclick="addItem('${itemName}')">
 //               <img src="${itemImg}" alt="${itemName}">
 //               <p class="items">${itemName} • $${itemPrice}</p>
 //             </div>
@@ -113,9 +113,9 @@ function drawMenu() {
       // console.log(sectionItem.img);
       menuHTML += `
           <div class="col-12 col-md-4 p-3 p-md-4">
-            <div class="card menuItems" onclick="addItem('${sectionItem.item}')">
+            <div class="card btn btn-primary menuItems" onclick="addItem('${sectionItem.item}',${sectionItem.price})">
               <img src="${sectionItem.img}" alt="${sectionItem.item}">
-              <p class="items">${sectionItem.item} • $${sectionItem.price}</p>
+              <p class="items fs-5 my-3">${sectionItem.item} • $${sectionItem.price}</p>
             </div>
           </div>
           `;
@@ -124,3 +124,43 @@ function drawMenu() {
   document.getElementById('menuListing').innerHTML = menuHTML;
 }
 drawMenu();
+
+let cart = [];
+
+function addItem(item, price) {
+
+  console.log(item)
+  console.log(price)
+  console.log(cart)
+
+  let itemInCartCheck = menu.find(cartItem => cartItem.name == item)
+  console.log(!!itemInCartCheck)
+
+  if (!itemInCartCheck) {
+    console.log('adding new item to cart');
+    const cartItem = {
+      name: `'${item}'`,
+      price: price,
+      qty: 1
+    }
+    cart.push(cartItem);
+  }
+  console.log(cart)
+
+  if (itemInCartCheck) {
+    console.log('item in car, adding qty');
+    menu.find(cartItem => {
+      if (cartItem.name == item) {
+        console.log(cartItem.name);
+        console.log(cartItem.qty);
+        console.log('adding qty');
+        cartItem.qty++;
+      }
+    })
+  }
+
+}
+
+function drawCart() {
+  document.getElementById('cart').innerHTML = cart;
+}
