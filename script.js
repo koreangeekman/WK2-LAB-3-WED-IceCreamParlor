@@ -178,7 +178,7 @@ function formatCart() {
   let cartHTML = "";
   cart.forEach(cartItem => {
     cartHTML += `
-          <span class="d-flex justify-content-between">
+          <span class="d-flex justify-content-between pt-3" style="font-family: 'Courier Prime', monospace;">
             <p>${cartItem.name}</p>
             <span class="d-flex justify-content-evenly">
               <p class="px-1"> | ${cartItem.qty}</p>
@@ -207,7 +207,7 @@ function calcSubtotal() {
 
 function formatTotals() {
   totalsHTML = `
-          <div class="total pe-3 text-right">
+          <div class="total pt-3 px-3 text-right" style="font-family: 'Courier Prime', monospace;">
             <span class="d-flex justify-content-between">
               <p class="fs-8 fw-bold mb-0">Subtotal: </p>
               <p class="fs-8 mb-0" id="subtotal">$${(totals.subtotal).toFixed(2)}</p>
